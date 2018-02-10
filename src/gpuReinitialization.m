@@ -140,7 +140,7 @@ function Distance = gpuReinitialization(obj, Distance)
 
 
 	% update distance map
-	loops = 0;
+	loops = 1;
 	for i = 1:loops
 	
 		k1 = ReInitialStep(obj, Distance_g,d0,Dx,Dy,Dz, Geo);
