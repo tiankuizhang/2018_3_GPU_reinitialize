@@ -130,12 +130,14 @@ function Distance = gpuReinitialization(obj, Distance)
 		zpd(mzd1) = Dz * (0.5 + (t2-t3-sign(t2-t3).*sqrt(Disc))./t1);
 		zpd(mzd2) = Dz * d0(mzd2) ./ (d0(mzd2)-dd0(mzd2));
 
-	toc;
+
 
 	GeoX = struct('mr',mxr,'ml',mxl, 'pr', xpr, 'pl', xpl);
 	GeoY = struct('mf',myf,'mb',myb, 'pf', ypf, 'pb', ypb);
 	GeoZ = struct('mu',mzu,'md',mzd, 'pu', zpu, 'pd', zpd);
 	Geo = struct('x',GeoX,'y',GeoY,'z',GeoZ);
+
+	toc;
 
 	% update distance map
 	loops = 0;
