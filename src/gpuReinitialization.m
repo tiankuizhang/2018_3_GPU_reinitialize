@@ -34,7 +34,7 @@ function Distance = gpuReinitialization(obj, Distance)
 	du0 = d0(obj.GD3.ooZ); du0(:,:,end) = d0(:,:,end);	% z:up
 	dd0 = d0(obj.GD3.ooz); dd0(:,:,1)   = d0(:,:,1);	% z:down
 
-	toc;
+
 
 		% x direction
 
@@ -66,6 +66,7 @@ function Distance = gpuReinitialization(obj, Distance)
 		Disc = (0.5*t1-t2-t3).^2 - 4*t2.*t3; % Discriminat
 		xpl(mxl1) = Dx * (0.5 + (t2-t3-sign(t2-t3).*sqrt(Disc)) ./t1 );
 		xpl(mxl2) = Dx * d0(mxl2) ./ (d0(mxl2)-dl0(mxl2)); % distacne from grid mxr to the boundary point
+	toc;
 
 	% y direction
 
