@@ -38,6 +38,7 @@ function Distance = gpuReinitialization(obj, Distance)
 		P2x0l = (dl0(mxl)+dr0(mxl)-2*d0(mxl));
 
 		mmodPx = zeros(Ny,Nx,Nz); 
+		keyboard
 		mmodPx(mxr) = MinMod(P2x0r, P2x0l);			
 		mmodPx(mxl) = mmodPx(mxr); %mmodPx(mxl) = MinMod(P2x0r, P2x0l);
 
