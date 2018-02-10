@@ -128,7 +128,8 @@ function Distance = gpuReinitialization(obj, Distance)
 	Geo = struct('x',GeoX,'y',GeoY,'z',GeoZ);
 
 	% update distance map
-	for i = 1:100
+	loops = 0;
+	for i = 1:loops
 	
 		k1 = ReInitialStep(obj, Distance,d0,Dx,Dy,Dz, Geo);
 		D1 = Distance-k1;
