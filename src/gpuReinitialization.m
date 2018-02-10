@@ -9,9 +9,9 @@ function Distance = gpuReinitialization(obj, Distance)
 	Dy = obj.GD3.Dy;
 	Dz = obj.GD3.Dz;
 
-	xpr = Dx*ones(Ny,Nx,Nz); xpl = xpr; % grid spacing in x direction
-	ypf = Dy*ones(Ny,Nx,Nz); ypb = ypf; % grid spacing in y direction
-	zpu = Dz*ones(Ny,Nx,Nz); zpd = zpu; % grid spacing in z direction
+	xpr = Dx*ones(Ny,Nx,Nz,'gpuArray'); xpl = xpr; % grid spacing in x direction
+	ypf = Dy*ones(Ny,Nx,Nz,'gpuArray'); ypb = ypf; % grid spacing in y direction
+	zpu = Dz*ones(Ny,Nx,Nz,'gpuArray'); zpd = zpu; % grid spacing in z direction
 
 	d0 = Distance;
 
