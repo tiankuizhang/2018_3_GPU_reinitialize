@@ -1,6 +1,5 @@
 % test the mexReinitialization scheme
 
-addpath(genpath('mexReinitialization'))
 %path_test % test if  I can call function from another folder
 
 
@@ -34,18 +33,10 @@ addpath(genpath('mexReinitialization'))
 	%				   'sooZ', int32(map.GD3.sooZ), ...
 	%				   'sooz', int32(map.GD3.sooz));
 
-	% because c index start from 0, minus 1 is needed
-	% index in c is a int32, conversion is needed
-	shift_mat = struct('soXo', int32(map.GD3.soXo-1), ...
-					   'soxo', int32(map.GD3.soxo-1), ...
-					   'sYoo', int32(map.GD3.sYoo-1), ...
-					   'syoo', int32(map.GD3.syoo-1), ...
-					   'sooZ', int32(map.GD3.sooZ-1), ...
-					   'sooz', int32(map.GD3.sooz-1));
 
-	%tic
-	%out=mexReinitialization(map.F, shift_mat,[map.GD3.Dx,map.GD3.Dy,map.GD3.Dz]);
-	%toc
+	tic
+	out = gpuReinitialization(map, map.F);
+	toc
 
 
 
@@ -64,7 +55,7 @@ addpath(genpath('mexReinitialization'))
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- map.plotSurface(0,1,'g')
+% map.plotSurface(0,1,'g')
 
  loops = 0;
  Skip = 20;
@@ -79,8 +70,8 @@ addpath(genpath('mexReinitialization'))
 
 %keyboard
 
-ves = figure('Name', 'Vesicle Shape');
-eng = figure('Name', 'energy/volume/area vs time');
+%ves = figure('Name', 'Vesicle Shape');
+%eng = figure('Name', 'energy/volume/area vs time');
 
 %
 tic
