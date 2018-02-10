@@ -137,7 +137,7 @@ function Distance = gpuReinitialization(obj, Distance)
 	GeoZ = struct('mu',mzu,'md',mzd, 'pu', zpu, 'pd', zpd);
 	Geo = struct('x',GeoX,'y',GeoY,'z',GeoZ);
 
-	toc;
+
 
 	% update distance map
 	loops = 0;
@@ -152,6 +152,8 @@ function Distance = gpuReinitialization(obj, Distance)
 
 	%obj.F = Distance;
 	disp('reinitialized ...')
+
+	toc;
 
 end
 
