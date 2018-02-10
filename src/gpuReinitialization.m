@@ -1,5 +1,7 @@
 function Distance = gpuReinitialization(obj, Distance)
 
+	tic;
+
 	Epsilon = 10^(-10);
 	Ny = obj.GD3.mrows;
 	Nx = obj.GD3.ncols;
@@ -15,6 +17,8 @@ function Distance = gpuReinitialization(obj, Distance)
 
 	d0 = gpuArray(Distance);
 	Distance_g = d0;
+
+	toc;
 
 %	dl0 = circshift(d0, [0 1 0]);  dl0(:,1,:)   = d0(:,1,:);	% x:left
 %	dr0 = circshift(d0, [0 -1 0]); dr0(:,end,:) = d0(:,end,:);	% x:right
