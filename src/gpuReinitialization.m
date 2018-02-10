@@ -154,7 +154,6 @@ function Distance = gpuReinitialization(obj, Distance)
 	disp('reinitialized ...')
 
 	toc;
-
 end
 
 function [Step] = ReInitialStep(obj, d, d0, Dx, Dy, Dz, Geo)
