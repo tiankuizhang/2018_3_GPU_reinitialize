@@ -37,7 +37,7 @@ function Distance = gpuReinitialization(obj, Distance)
 		P2x0r = (dl0(mxr)+dr0(mxr)-2*d0(mxr));
 		P2x0l = (dl0(mxl)+dr0(mxl)-2*d0(mxl));
 
-		mmodPx = zeros(Ny,Nx,Nz); 
+		mmodPx = zeros(Ny,Nx,Nz,'gpuArray'); 
 		keyboard
 		mmodPx(mxr) = MinMod(P2x0r, P2x0l);			
 		mmodPx(mxl) = mmodPx(mxr); %mmodPx(mxl) = MinMod(P2x0r, P2x0l);
@@ -69,7 +69,7 @@ function Distance = gpuReinitialization(obj, Distance)
 		P2y0f = (df0(myf)+db0(myf)-2*d0(myf));
 		P2y0b = (df0(myb)+db0(myb)-2*d0(myb));
 
-		mmodPy = zeros(Ny,Nx,Nz);  
+		mmodPy = zeros(Ny,Nx,Nz,'gpuArray');  
 		mmodPy(myf) = MinMod(P2y0f, P2y0b);
 		mmodPy(myb) = mmodPy(myf); %mmodPy(myb) = MinMod(P2y0f, P2y0b);
 
@@ -101,7 +101,7 @@ function Distance = gpuReinitialization(obj, Distance)
 		P2z0u = (du0(mzu)+dd0(mzu)-2*d0(mzu));
 		P2z0d = (du0(mzd)+dd0(mzd)-2*d0(mzd));
 
-		mmodPz = zeros(Ny,Nx,Nz);
+		mmodPz = zeros(Ny,Nx,Nz,'gpuArray');
 		mmodPz(mzu) = MinMod(P2z0u,P2z0d);
 		mmodPz(mzd) = mmodPz(mzu);
 
