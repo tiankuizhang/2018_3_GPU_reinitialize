@@ -38,7 +38,6 @@ function Distance = gpuReinitialization(obj, Distance)
 		P2x0l = (dl0(mxl)+dr0(mxl)-2*d0(mxl));
 
 		mmodPx = zeros(Ny,Nx,Nz,'gpuArray'); 
-		keyboard
 		mmodPx(mxr) = MinMod(P2x0r, P2x0l);			
 		mmodPx(mxl) = mmodPx(mxr); %mmodPx(mxl) = MinMod(P2x0r, P2x0l);
 
@@ -154,15 +153,15 @@ function [Step] = ReInitialStep(obj, d, d0, Dx, Dy, Dz, Geo)
 	[Ny, Nx, Nz] = size(d0);
 	Epsilon = 10^(-10);
 
-	Step = zeros(Ny,Nx,Nz); % initialize step
-	deltat = min(min(Dx,Dy),Dz)*ones(Ny,Nx,Nz); % initialize the adaptive time step as minum of grid spacing
-	xp = Dx*ones(Ny,Nx,Nz); % grid spacing in x direction
-	yp = Dy*ones(Ny,Nx,Nz); % grid spacing in y direction
-	zp = Dz*ones(Ny,Nx,Nz); % grid spacing in z direction
+	Step = zeros(Ny,Nx,Nz,'gpuArray'); % initialize step
+	deltat = min(min(Dx,Dy),Dz)*ones(Ny,Nx,Nz,'gpuArray'); % initialize the adaptive time step as minum of grid spacing
+	xp = Dx*ones(Ny,Nx,Nz,'gpuArray'); % grid spacing in x direction
+	yp = Dy*ones(Ny,Nx,Nz,'gpuArray'); % grid spacing in y direction
+	zp = Dz*ones(Ny,Nx,Nz,'gpuArray'); % grid spacing in z direction
 
 	% initialize derivative matrices
 
-		xR = zeros(Ny,Nx,Nz); xL = xR; yR = xR; yL = xR; zR = xR; zL = xR;
+		xR = zeros(Ny,Nx,Nz,gpuArray); xL = xR; yR = xR; yL = xR; zR = xR; zL = xR;
 
 	% ENO derivatives
 
