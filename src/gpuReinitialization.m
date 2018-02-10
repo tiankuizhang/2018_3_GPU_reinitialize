@@ -13,7 +13,7 @@ function Distance = gpuReinitialization(obj, Distance)
 	ypf = Dy*ones(Ny,Nx,Nz,'gpuArray'); ypb = ypf; % grid spacing in y direction
 	zpu = Dz*ones(Ny,Nx,Nz,'gpuArray'); zpd = zpu; % grid spacing in z direction
 
-	d0 = Distance;
+	d0 = gpuArray(Distance);
 
 %	dl0 = circshift(d0, [0 1 0]);  dl0(:,1,:)   = d0(:,1,:);	% x:left
 %	dr0 = circshift(d0, [0 -1 0]); dr0(:,end,:) = d0(:,end,:);	% x:right
