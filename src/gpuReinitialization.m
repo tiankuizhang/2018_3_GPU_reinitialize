@@ -14,6 +14,7 @@ function Distance = gpuReinitialization(obj, Distance)
 	zpu = Dz*ones(Ny,Nx,Nz,'gpuArray'); zpd = zpu; % grid spacing in z direction
 
 	d0 = gpuArray(Distance);
+	Distance_g = d0;
 
 %	dl0 = circshift(d0, [0 1 0]);  dl0(:,1,:)   = d0(:,1,:);	% x:left
 %	dr0 = circshift(d0, [0 -1 0]); dr0(:,end,:) = d0(:,end,:);	% x:right
@@ -131,10 +132,10 @@ function Distance = gpuReinitialization(obj, Distance)
 	loops = 0;
 	for i = 1:loops
 	
-		k1 = ReInitialStep(obj, Distance,d0,Dx,Dy,Dz, Geo);
-		D1 = Distance-k1;
+		k1 = ReInitialStep(obj, Distance_g,d0,Dx,Dy,Dz, Geo);
+		D1 = Distance_g-k1;
 		k2 = ReInitialStep(obj, D1,d0,Dx,Dy,Dz, Geo);
-		Distance = (Distance+D1-k2)/2;
+		Distance_g = (Distance_g+D1-k2)/2;
 
 	end
 
