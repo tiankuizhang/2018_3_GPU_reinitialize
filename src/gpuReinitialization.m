@@ -66,7 +66,7 @@ function Distance = gpuReinitialization(obj, Distance)
 		Disc = (0.5*t1-t2-t3).^2 - 4*t2.*t3; % Discriminat
 		xpl(mxl1) = Dx * (0.5 + (t2-t3-sign(t2-t3).*sqrt(Disc)) ./t1 );
 		xpl(mxl2) = Dx * d0(mxl2) ./ (d0(mxl2)-dl0(mxl2)); % distacne from grid mxr to the boundary point
-	toc;
+	
 
 	% y direction
 
@@ -129,6 +129,8 @@ function Distance = gpuReinitialization(obj, Distance)
 		Disc = (0.5*t1-t2-t3).^2 - 4*t2.*t3; % Discriminat
 		zpd(mzd1) = Dz * (0.5 + (t2-t3-sign(t2-t3).*sqrt(Disc))./t1);
 		zpd(mzd2) = Dz * d0(mzd2) ./ (d0(mzd2)-dd0(mzd2));
+
+	toc;
 
 	GeoX = struct('mr',mxr,'ml',mxl, 'pr', xpr, 'pl', xpl);
 	GeoY = struct('mf',myf,'mb',myb, 'pf', ypf, 'pb', ypb);
